@@ -16,4 +16,10 @@ public class Institucion {
 
     @ColumnInfo(name = "tipo")
     public String tipo;
+
+    public Institucion(String nombre, String direccion, String tipo) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.tipo = tipo;
+    }
 }
