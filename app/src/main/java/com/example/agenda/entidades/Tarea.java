@@ -5,12 +5,28 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = {@ForeignKey(
-        entity = Institucion.class,
-        parentColumns = "i_id",
-        childColumns = "institucion",
-        onDelete = ForeignKey.CASCADE)})
-public abstract class Tarea {
+@Entity(tableName = "tarea", foreignKeys = {
+        @ForeignKey(
+            entity = Institucion.class,
+            parentColumns = "i_id",
+            childColumns = "institucion",
+            onDelete = ForeignKey.CASCADE),
+        @ForeignKey(
+            entity = Categoria.class,
+            parentColumns = "c_id",
+            childColumns = "categoria",
+            onDelete = ForeignKey.CASCADE),
+        @ForeignKey(
+            entity = Subcategoria.class,
+            parentColumns = "s_id",
+            childColumns = "subcategoria",
+            onDelete = ForeignKey.CASCADE),
+        @ForeignKey(
+            entity = Notifica.class,
+            parentColumns = "n_id",
+            childColumns = "notifica",
+            onDelete = ForeignKey.CASCADE)})
+public class Tarea {
     @PrimaryKey(autoGenerate = true)
     public int t_id;
     @ColumnInfo(name = "fecha")
@@ -26,13 +42,15 @@ public abstract class Tarea {
     public String estado;
 
     @ColumnInfo(name = "categoria")
-    public String categoria;
+    public int categoria;
 
     @ColumnInfo(name = "subcategoria")
-    public String subcategoria;
+    public int subcategoria;
 
     @ColumnInfo(name = "institucion")
     public int institucion;
 
+    @ColumnInfo(name = "notifica")
+    public int notifica;
 
 }

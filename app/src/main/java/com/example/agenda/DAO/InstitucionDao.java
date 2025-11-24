@@ -26,11 +26,11 @@ public interface InstitucionDao {
     @Query("SELECT * FROM institucion WHERE i_id LIKE :id")
     Institucion findById(long id);
 
-    @Query("SELECT * FROM institucion WHERE direccion LIKE :address LIMIT 1")
-    Institucion findByAddress(String address);
+    @Query("SELECT * FROM institucion WHERE direccion LIKE :address")
+    List<Institucion> findByAddress(String address);
 
     @Query("UPDATE institucion SET nombre= :nombre AND direccion= :direccion AND tipo= :tipo WHERE i_id= :id")
-    void updateTarea(long id, String nombre, String direccion, String tipo);
+    void updateInstitucion(long id, String nombre, String direccion, String tipo);
 
     @Insert
     void insertAll(Institucion... institucions);
